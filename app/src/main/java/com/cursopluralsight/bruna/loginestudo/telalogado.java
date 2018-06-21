@@ -18,4 +18,9 @@ public class telalogado extends AppCompatActivity {
         Intent intent2 = new Intent(getApplicationContext(), telalogin.class);
         startActivity(intent2);
     }
+
+    public void irterceiratela (View view) {
+        Intent intent3 = new Intent(getApplicationContext(), terceiratela.class);
+        startActivity(intent3);
+    }
 }

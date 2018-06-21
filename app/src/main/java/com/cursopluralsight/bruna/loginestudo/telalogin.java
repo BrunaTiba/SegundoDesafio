@@ -21,10 +21,10 @@ public class telalogin extends AppCompatActivity {
         String nome = nomeEditText.getText().toString();
         String senha = senhaEditText.getText().toString();
         if (nome.equals("bruna") && senha.equals("123")) {
-            //   public void irTelalogado (View view){
+
             Intent intent1 = new Intent(getApplicationContext(), telalogado.class);
             startActivity(intent1);
-            // }
+
         }else {
 
             AlertDialog AlertDialog;
@@ -33,5 +33,10 @@ public class telalogin extends AppCompatActivity {
             AlertDialog.setMessage("Login invalido");
             AlertDialog.show();
         }
+    }
+
+    public void btCadastrar (View view) {
+        Intent intent3 = new Intent(getApplicationContext(), telacadastrar.class);
+        startActivity(intent3);
     }
 }

@@ -16,7 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".telalogado"></activity>
+        <activity android:name=".telalogado" />
+        <activity android:name=".terceiratela" />
+        <activity android:name=".telacadastrar"></activity>
     </application>
 
 </manifest>
