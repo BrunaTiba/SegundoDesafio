@@ -46,23 +46,6 @@
             android:onClick="btTelaLogin"
             android:text="ok" />
 
-        <Button
-            android:id="@+id/btSalvar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Salvar" />
-
-        <Button
-            android:id="@+id/btLimpar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Limpar" />
-
-        <Button
-            android:id="@+id/btnRecuperar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Recuperar" />
 
         <Button
             android:id="@+id/btCadastrar"

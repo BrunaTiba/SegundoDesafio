@@ -19,67 +19,32 @@ public class telalogin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_telalogin);
 
+        SharedPreferences prefs = getSharedPreferences("Preferencias", Context.MODE_PRIVATE);
+        //String nomeCadastro = prefs.getString("nome", null);
+       // String senhaCadastro =prefs.getString("senha", null);
+        if (prefs.getBoolean("logado", false)){
+            Intent intent1 = new Intent(getApplicationContext(), telalogado.class);
+            startActivity(intent1);
+        }
 
 
     }
 
     public void btTelaLogin(View view) {
+        TextView nomeEditText = (TextView) findViewById(R.id.nomeEditText);
+        TextView senhaEditText = (TextView) findViewById(R.id.senhaEditText);
+        String nome = nomeEditText.getText().toString();
+        String senha = senhaEditText.getText().toString();
 
-        final EditText nome = (EditText) findViewById(R.id.nomeEditText);
-        final EditText senha = (EditText) findViewById(R.id.senhaEditText);
-
-        Button gravar = (Button) findViewById(R.id.btSalvar);
-        gravar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                SharedPreferences prefs = getSharedPreferences("Preferencias", Context.MODE_PRIVATE);
-                SharedPreferences.Editor ed= prefs.edit();
-
-                ed.putString ("nome", nome.getText().toString());
-                ed.putString ("senha", senha.getText().toString());
-
-                ed.apply();
-                Toast.makeText(getBaseContext(), "Cadastro realizado com sucesso", Toast.LENGTH_LONG).show();
-
-                Button limpar = (Button) findViewById(R.id.btLimpar);
-                limpar.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        nome.setText("");
-                        senha.setText("");
-                    }
-                });
-                Button recuperar = (Button) findViewById(R.id.btnRecuperar);
-                recuperar.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        SharedPreferences prefs = getSharedPreferences("Preferencias", Context.MODE_PRIVATE);
-                        nome.setText(prefs.getString("nome", "Não tem"));
-                        senha.setText(prefs.getString("email", "Não tem"));
-                    }
-                });
-
-            }
-        });
-
-         //EditText nome = (EditText) findViewById(R.id.nomeCadastarEditText);
-         //EditText senha = (EditText) findViewById(R.id.senhaCadastrarEditText);
-        //SharedPreferences prefs = getSharedPreferences("Preferencias", Context.MODE_PRIVATE);
-
-       // SharedPreferences.Editor ed= prefs.edit();
-
-        //ed.putString ("nome", nome.getText().toString());
-       // ed.putString ("senha", senha.getText().toString());
-
-       // ed.apply();
-        //Toast.makeText(getBaseContext(), "Cadastro realizado com sucesso", Toast.LENGTH_LONG).show();
+        SharedPreferences prefs = getSharedPreferences("Preferencias", Context.MODE_PRIVATE);
+        SharedPreferences.Editor ed= prefs.edit();
+        String nomeCadastro = prefs.getString("nome", null);
+        String senhaCadastro =prefs.getString("senha", null);
 
 
-        //TextView nomeEditText = (TextView) findViewById(R.id.nomeEditText);
-        //TextView senhaEditText = (TextView) findViewById(R.id.senhaEditText);
-        //String nome = nomeEditText.getText().toString();
-        //String senha = senhaEditText.getText().toString();
-        if (nome.equals("nome") && senha.equals("senha")) {
+        if (nome.equals(nomeCadastro) && senha.equals(senhaCadastro)) {
+            ed.putBoolean("logado", true).apply();
+
 
             Intent intent1 = new Intent(getApplicationContext(), telalogado.class);
             startActivity(intent1);
@@ -89,13 +54,21 @@ public class telalogin extends AppCompatActivity {
             AlertDialog AlertDialog;
             AlertDialog = new AlertDialog.Builder(this).create();
             AlertDialog.setTitle("Parabéns!!!");
-            AlertDialog.setMessage("Login invalido, favor realizar cadastro");
+            AlertDialog.setMessage("Login invalido");
             AlertDialog.show();
+
         }
+
     }
 
+
+
     public void btCadastrar (View view) {
+
         Intent intent3 = new Intent(getApplicationContext(), telacadastrar.class);
+
         startActivity(intent3);
+
     }
+
 }

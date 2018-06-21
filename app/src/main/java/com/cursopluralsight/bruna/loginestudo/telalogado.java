@@ -1,6 +1,8 @@
 package com.cursopluralsight.bruna.loginestudo;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +17,9 @@ public class telalogado extends AppCompatActivity {
 
 
     public void irTelalogin (View view){
+        SharedPreferences prefs = getSharedPreferences("Preferencias", Context.MODE_PRIVATE);
+        SharedPreferences.Editor ed= prefs.edit();
+        ed.putBoolean("logado", false).apply();
         Intent intent2 = new Intent(getApplicationContext(), telalogin.class);
         startActivity(intent2);
     }
